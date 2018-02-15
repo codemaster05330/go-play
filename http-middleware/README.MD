@@ -6,5 +6,5 @@ Run:
 2. go run *.go
 
 Reference:
-http://www.alexedwards.net/blog/a-recap-of-request-handling
-http://www.alexedwards.net/blog/making-and-using-middleware
+- http://www.alexedwards.net/blog/a-recap-of-request-handling
+- http://www.alexedwards.net/blog/making-and-using-middleware
