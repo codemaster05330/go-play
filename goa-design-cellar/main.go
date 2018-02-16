@@ -6,6 +6,7 @@ import (
 	"github.com/goadesign/goa"
 	"github.com/goadesign/goa/middleware"
 	"github.com/nurali-techie/play-go-web/goa-design-cellar/app"
+	mw "github.com/nurali-techie/play-go-web/goa-design-cellar/middleware"
 )
 
 func main() {
@@ -17,6 +18,8 @@ func main() {
 	service.Use(middleware.LogRequest(true))
 	service.Use(middleware.ErrorHandler(service, true))
 	service.Use(middleware.Recover())
+
+	service.Use(mw.MetricRecorder())
 
 	// Mount "bottle" controller
 	c := NewBottleController(service)
