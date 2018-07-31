@@ -29,7 +29,7 @@ sample run
 2018/07/31 17:15:59 w=true
 
 ** client output **
-[nvirani@localhost client]$ go run client.go
+[user1@localhost client]$ go run client.go
 2018/07/31 17:15:59 req.URL.Path=/api/v1/namespaces/ns;type=che/pods/p;space=997f146d-b0f4-4a97-ab20-6414878d9508
 2018/07/31 17:15:59 req.URL.RawQuery=w=true
 2018/07/31 17:15:59 res.StatusCode=200
