@@ -3,10 +3,12 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/goadesign/goa"
 	"github.com/goadesign/goa/middleware"
 	"github.com/nurali-techie/play-go-web/goa-design-cellar/app"
-	mw "github.com/nurali-techie/play-go-web/goa-design-cellar/middleware"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
@@ -19,11 +21,16 @@ func main() {
 	service.Use(middleware.ErrorHandler(service, true))
 	service.Use(middleware.Recover())
 
-	service.Use(mw.MetricRecorder())
-
 	// Mount "bottle" controller
 	c := NewBottleController(service)
 	app.MountBottleController(service, c)
+
+	http.Handle("/api/", service.Mux)
+
+	// Enable prometheus metrics
+	// http.Handle("/metrics", prometheus.Handler())
+	http.Handle("/metrics", promhttp.Handler())
+	// service.Use(mw.MetricRecorder())
 
 	// Start service
 	if err := service.ListenAndServe(":8080"); err != nil {
