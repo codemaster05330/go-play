@@ -33,9 +33,13 @@ var _ = Resource("bottle", func() { // Resources group related API endpoints
 var BottleMedia = MediaType("application/vnd.goa.example.bottle+json", func() {
 	Description("A bottle of wine")
 	Attributes(func() { // Attributes define the media type shape.
-		Attribute("id", Integer, "Unique bottle ID")
+		Attribute("id", Integer, "Unique bottle ID", func() {
+			Example("f03f023b-0427-4cdb-924b-fb2369018ab6")
+		})
 		Attribute("href", String, "API href for making requests on the bottle")
-		Attribute("name", String, "Name of wine")
+		Attribute("name", String, "Name of wine", func() {
+			Example("red wine")
+		})
 		Required("id", "href", "name")
 	})
 	View("default", func() { // View defines a rendering of the media type.
