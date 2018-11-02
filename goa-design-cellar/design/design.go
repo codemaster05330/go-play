@@ -34,7 +34,7 @@ var BottleMedia = MediaType("application/vnd.goa.example.bottle+json", func() {
 	Description("A bottle of wine")
 	Attributes(func() { // Attributes define the media type shape.
 		Attribute("id", Integer, "Unique bottle ID", func() {
-			Example("1111")
+			Example(1111)
 		})
 		Attribute("href", String, "API href for making requests on the bottle")
 		Attribute("name", String, "Name of wine", func() {
